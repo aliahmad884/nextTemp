@@ -28,7 +28,7 @@ jobs:
         run: |
           echo "HOST: ${{ secrets.SSH_HOST }}"
           echo "USERNAME: ${{ nexttemp.SSH_USERNAME }}"
-          # Print the length of the private key to ensure it's being set (DO NOT print the key itself)
+          # Print th e length of the private key to ensure it's being set (DO NOT print the key itself)
           echo "Private Key Length: ${#secrets.SSH_PRIVATE_KEY}"
           echo "Debugging completed."
 
