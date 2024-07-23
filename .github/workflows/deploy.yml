@@ -28,10 +28,8 @@ jobs:
         run: |
           echo "HOST: ${{ secrets.SSH_HOST }}"
           echo "USERNAME: ${{ nexttemp.SSH_USERNAME }}"
-          # Print the length of the private key to ensure it's being set (DO NOT print the key itself)
-          echo "Private Key Length: ${#secrets.SSH_PRIVATE_KEY}"
+          # Do not print secrets like the private key or password in logs
           echo "Debugging completed."
-          echo "Hello Pa g!"
 
       - name: Deploy to Krystal Hosting
         uses: appleboy/ssh-action@v0.1.1
