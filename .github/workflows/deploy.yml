@@ -27,8 +27,9 @@ jobs:
       - name: Debug Secrets
         run: |
           echo "HOST: ${{ secrets.SSH_HOST }}"
-          echo "USERNAME: ${{ secrets.SSH_USERNAME }}"
-          # Do not print secrets like the private key or password in logs
+          echo "USERNAME: ${{ nexttemp.SSH_USERNAME }}"
+          # Print the length of the private key to ensure it's being set (DO NOT print the key itself)
+          echo "Private Key Length: ${#secrets.SSH_PRIVATE_KEY}"
           echo "Debugging completed."
 
       - name: Deploy to Krystal Hosting
