@@ -31,6 +31,7 @@ jobs:
           # Print the length of the private key to ensure it's being set (DO NOT print the key itself)
           echo "Private Key Length: ${#secrets.SSH_PRIVATE_KEY}"
           echo "Debugging completed."
+          echo "Hello Pa g!"
 
       - name: Deploy to Krystal Hosting
         uses: appleboy/ssh-action@v0.1.1
