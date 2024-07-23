@@ -27,7 +27,7 @@ jobs:
       - name: Debug Secrets
         run: |
           echo "HOST: ${{ secrets.SSH_HOST }}"
-          echo "USERNAME: ${{ nexttemp.SSH_USERNAME }}"
+          echo "USERNAME: ${{ secrets.SSH_USERNAME }}"
           # Do not print secrets like the private key or password in logs
           echo "Debugging completed."
 
