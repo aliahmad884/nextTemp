@@ -1,0 +1,36 @@
+name: Deploy to Krystal Hosting
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to Krystal Hosting
+        uses: appleboy/ssh-action@v0.1.1
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /path/to/your/nextjs-app
+            rm -rf *
+            tar czf - . | ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} 'tar xzf - -C /path/to/your/nextjs-app'
