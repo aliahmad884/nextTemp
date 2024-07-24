@@ -26,7 +26,7 @@ jobs:
 
       - name: Debug Secrets
         run: |
-          echo "HOST: ${{ secrets.SSH_HOST }}"
+          echo "HOST: ${{ secrets.SSH_HOST2 }}"
           echo "USERNAME: ${{ secrets.SSH_USERNAME }}"
           # Do not print secrets like the private key or password in logs
           echo "Debugging completed."
@@ -34,7 +34,7 @@ jobs:
       - name: Deploy to Krystal Hosting
         uses: appleboy/ssh-action@v0.1.1
         with:
-          host: ${{ secrets.SSH_HOST }}
+          host: ${{ secrets.SSH_HOST2 }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
@@ -47,6 +47,6 @@ jobs:
             echo "Current directory contents after removal:"
             ls -la
             echo "Deploying new files..."
-            tar czf - . | ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} 'tar xzf - -C /home/wecarhir/temp.litpaint.com/'
+            tar czf - . | ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST2 }} 'tar xzf - -C /home/wecarhir/temp.litpaint.com/'
             echo "Deployment completed."
           timeout: 60s
